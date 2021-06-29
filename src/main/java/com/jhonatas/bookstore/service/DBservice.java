@@ -35,6 +35,8 @@ public class DBservice {
 				
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
 		livroRepository.saveAll(Arrays.asList(l1, l2, l3, l4, l5));
+		
+	
 	}
 
 }
