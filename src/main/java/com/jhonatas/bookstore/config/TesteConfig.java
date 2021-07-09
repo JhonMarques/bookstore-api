@@ -11,14 +11,14 @@ import com.jhonatas.bookstore.service.DBservice;
 @Configuration
 @Profile("test")
 public class TesteConfig {
-	
+
 	@Autowired
 	private DBservice dbService;
 
-	
 	@Bean
 	public void instanciaBaseDeDados() {
-		this.dbService.instanciaBaseDeDados();
+
+	    this.dbService.instanciaBaseDeDados();
 	}
 
 }

@@ -11,13 +11,13 @@ import com.jhonatas.bookstore.service.DBservice;
 @Configuration
 @Profile("dev")
 public class DevConfig {
-	
+
 	@Autowired
 	private DBservice dbService;
-	
+
 	@Value("${spring.jpa.hibernate.ddl-auto}")
 	private String strategy;
-	
+
 	@Bean
 	public boolean instanciaBaseDeDados() {
 		if(strategy.equals("create")) {

@@ -7,15 +7,15 @@ import com.jhonatas.bookstore.domain.Categoria;
 public class CategoriaDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer id;
 	private String nome;
 	private String descricao;
-	
+
 	public CategoriaDTO() {
 		super();
 	}
-	
+
 	public CategoriaDTO(Categoria obj) {
 		super();
 		this.id = obj.getId();
@@ -24,31 +24,37 @@ public class CategoriaDTO implements Serializable{
 	}
 
 	public Integer getId() {
-		return id;
+
+	    return id;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+
+	    this.id = id;
 	}
 
 	public String getNome() {
-		return nome;
+
+	    return nome;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+
+	    this.nome = nome;
 	}
 
 	public String getDescricao() {
-		return descricao;
+
+	    return descricao;
 	}
 
 	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+
+	    this.descricao = descricao;
 	}
-	
-	
-	
-	
+
+
+
+
 
 }

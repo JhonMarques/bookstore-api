@@ -3,6 +3,7 @@ package com.jhonatas.bookstore.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.jhonatas.bookstore.service.exceptions.DataIntegrityViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +25,9 @@ public class CategoriaService {
 	}
 
 	public List<Categoria> findAll(){
-		return repository.findAll();	
+		return repository.findAll();
 	}
-	
+
 	public Categoria create(Categoria obj) {
 		obj.setId(null);
 		return repository.save(obj);
@@ -41,6 +42,11 @@ public class CategoriaService {
 
 	public void delete(Integer id) {
 		findById(id);
-		repository.deleteById(id);
+		try {
+            repository.deleteById(id);
+        }catch (DataIntegrityViolationException e){
+            throw new com.jhonatas.bookstore.service.exceptions.DataIntegrityViolationException(
+                "Esta categoria não pode ser excluida pois possui livros associados!");
+        }
 	}
 }
