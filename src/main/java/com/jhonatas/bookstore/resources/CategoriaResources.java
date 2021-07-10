@@ -21,6 +21,8 @@ import com.jhonatas.bookstore.domain.Categoria;
 import com.jhonatas.bookstore.dtos.CategoriaDTO;
 import com.jhonatas.bookstore.service.CategoriaService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaResources {
@@ -39,20 +41,20 @@ public class CategoriaResources {
 		List<Categoria> list = service.findAll();
 		List<CategoriaDTO> listDTO = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok(listDTO);
-	} 
+	}
 
 	@PostMapping
-	public ResponseEntity<Categoria> create(@RequestBody Categoria obj) {
+	public ResponseEntity<Categoria> create(@Valid @RequestBody Categoria obj) {
 		obj = service.create(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<CategoriaDTO> update(@PathVariable Integer id, @RequestBody CategoriaDTO objDto){
+	public ResponseEntity<CategoriaDTO> update(@Valid @PathVariable Integer id, @RequestBody CategoriaDTO objDto){
 		Categoria newObj = service.update(id, objDto);
 		return ResponseEntity.ok().body(new CategoriaDTO(newObj));
-		
+
 	}
 	@DeleteMapping(value="/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
