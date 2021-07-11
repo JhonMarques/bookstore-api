@@ -1,14 +1,16 @@
 package com.jhonatas.bookstore.service.exceptions;
 
+import java.util.List;
+
 public class StandardError {
 
 	private Long timesTamp;
 	private Integer status;
 	private String message;
-	
+
+
 	public StandardError() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public StandardError(Long timesTamp, Integer status, String message) {
@@ -41,5 +43,5 @@ public class StandardError {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+
 }
