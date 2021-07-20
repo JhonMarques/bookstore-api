@@ -30,8 +30,7 @@ public class LivroResources {
 
     //Busca livros apresentando apenas Livro.Id, Livro.Titulo, Id.Categoria e Titulo.categoria
     @GetMapping
-    public ResponseEntity<List<LivroDTO>> findAll(@RequestParam (value = "categoria",
-        defaultValue = "0") Integer id_cat){
+    public ResponseEntity<List<LivroDTO>> findAll(@RequestParam (value = "categoria", defaultValue = "0") Integer id_cat){
         List<Livro> livros = service.findAll(id_cat);
         List<LivroDTO> listDTO = livros.stream()
             .map(obj -> new LivroDTO(obj))
@@ -53,7 +52,7 @@ public class LivroResources {
     }
 
     @PostMapping
-    public ResponseEntity<Livro> create(@Valid @RequestParam(value = "categoria", defaultValue = "0")
+    public ResponseEntity<Livro> create(@Valid @RequestParam(value = "categorias", defaultValue = "0")
             Integer id_cat,@RequestBody Livro obj){
         Livro newObj = service.create(id_cat, obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
